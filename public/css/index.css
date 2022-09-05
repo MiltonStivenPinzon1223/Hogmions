@@ -1,0 +1,141 @@
+.hoverable {
+    display: inline-block;
+    backface-visibility: hidden;
+    vertical-align: middle;
+    position: relative;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    tranform: translateZ(0);
+    transition-duration: 0.3s;
+    transition-property: transform;
+  }
+  
+  .hoverable:before {
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+    content: "";
+    top: 100%;
+    left: 5%;
+    height: 10px;
+    width: 90%;
+    opacity: 0;
+    background: -webkit-radial-gradient(center, ellipse, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 80%);
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 80%);
+    /* W3C */
+    transition-duration: 0.3s;
+    transition-property: transform, opacity;
+  }
+  
+  .hoverable:hover, .hoverable:active, .hoverable:focus {
+    transform: translateY(-5px);
+  }
+  
+  .hoverable:hover:before, .hoverable:active:before, .hoverable:focus:before {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+  
+  @keyframes bounce-animation {
+    16.65% {
+      -webkit-transform: translateY(8px);
+      transform: translateY(8px);
+    }
+    33.3% {
+      -webkit-transform: translateY(-6px);
+      transform: translateY(-6px);
+    }
+    49.95% {
+      -webkit-transform: translateY(4px);
+      transform: translateY(4px);
+    }
+    66.6% {
+      -webkit-transform: translateY(-2px);
+      transform: translateY(-2px);
+    }
+    83.25% {
+      -webkit-transform: translateY(1px);
+      transform: translateY(1px);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+  .bounce {
+    animation-name: bounce-animation;
+    animation-duration: 2s;
+  }
+  
+  /*everything below here is just setting up the page, so dont worry about it */
+
+  @media screen and (min-width: 990px) {
+    .info-photo{height: 60vh!important;}
+    .page-content{padding-top: 200px!important;}
+  }
+  body {
+    background-color: #7f7f7f;
+    font-weight: 600;
+    text-align: center !important;
+    color: black;
+    object-fit: cover;
+  }
+  
+  nav {
+    background: none !important;
+    text-transform: uppercase!important;
+    box-shadow: none!important;
+    width: auto!important;
+  }
+  nav li {
+    margin-left: 3em!important;
+    margin-right: 3em!important;
+  }
+  nav li a {
+    transition: 0.5s color ease-in-out!important;
+  }
+  
+  .page-title {
+    opacity: 0.75 !important;
+  }
+  .navbar{border: none;}
+  .container-main{
+    height: 10vh;
+    overflow: hidden;
+    background-image: url('../media/img1.jpg');
+    background-size: 100% 100vh;
+    background-repeat: no-repeat;
+  }
+
+  .page-content{
+    padding: auto;
+    margin: auto;
+    color: white;
+    padding-top: 100px!important;
+  }
+
+  .info-photo{
+    width: 100%;
+    height: 25vh;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .info{
+    padding: 0!important;
+  }
+
+  .who{
+    margin: 30px 60px 0px 30px!important;
+  }
+
+  .wrapper{margin-top: -30px!important;border-radius:50px; padding-bottom: 30px; padding-top: 20px;}
+
+footer{
+  background: linear-gradient(to bottom, #7f7f7f, #000000);
+}
+
+.navbar-nav{margin:0% 25%;}
+ul{
+  position: fixed;
+  z-index: 1;
+}
