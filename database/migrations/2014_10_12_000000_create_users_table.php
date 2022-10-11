@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('active_projects');
             $table->string('url_photo');
-            $table->string('proffession');
             $table->string('telephone');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

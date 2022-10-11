@@ -17,23 +17,45 @@
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
-        <li><a id="len1" class="hoverable bounce" href="{{route('index')}}">Home</a></li>
+        <li><a href="{{route('index')}}">
+        <button>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>Inicio
+          </button>
+        </a></li>
         @if (Route::is('register'))
-        <li><a id="len2" class="hoverable bounce" href="{{route('login')}}"><b>Inicia Sesion</b></a></li>
+        <li><a id="len2" class="hoverable bounce" href="{{route('login')}}">
+        <button>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span> Ingresa
+          </button>
+        </a></li>
         @else
-        <li><a id="len2" class="hoverable bounce pulse" href="{{route('register')}}"><b>Comienza!</b></a></li>
+        <li><a href="{{route('register')}}">
+        <button>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span> Comienza
+          </button>
+        </a></li>
         @endif
-        <li><a id="len4" class="hoverable bounce" href="{{route('catalogue')}}">Catalogo</a></li>
+        <li><a href="{{route('catalogue')}}">
+        <button>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span> Catalogo
+          </button>
+        </a></li>
       </ul>
     </div>
   </nav>
-  <div class="page-content">
-    <div class="page-title">
-      <h1>Quick Sentry</h1>
-      <p class="lead">
-      Tu herramienta perfecta para crear tus aplicativos webs de manera segura y rápida.
-      </p>
-    </div>
+  <div class="opacity-main">
   </div>
 </div>
 @yield('main')

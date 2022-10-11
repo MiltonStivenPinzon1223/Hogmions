@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class UserController extends Controller
 {
-    public function __construct()
+    /*public function __construct()
     {
         $this->middleware('auth');
-    }
+    }*/
     /**
      * Display a listing of the resource.
      *
@@ -49,7 +50,7 @@ class UserController extends Controller
     }
 
 
-    public function profile()
+    public function profile($id)
     {
         $id = Auth::user()->id;
         $users = user::where('id', $id)->first();
@@ -131,5 +132,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function qr()
+    {
+        QrCode::size(500)
+            ->format('png')
+            ->generate('www.google.com', public_path('images/qrcode.png'));
+return view('prueba');
     }
 }

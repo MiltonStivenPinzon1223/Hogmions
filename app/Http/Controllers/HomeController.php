@@ -57,10 +57,9 @@ class HomeController extends Controller
             'telephone' => $request->telephone,
             'active_projects' => "0",
             'url_photo' => "0",
-            'profession' => "0",
             'password' => Hash::make($request->password),
         ]);
         $id = $user->id;
-        return redirect()->route('profile', compact('id'));
+        return redirect()->route('login');
     }
 }
