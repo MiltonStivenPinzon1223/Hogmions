@@ -54,7 +54,7 @@ class UserController extends Controller
     {
         $id = Auth::user()->id;
         $users = user::where('id', $id)->first();
-        return view('profile', compact('users'));
+        return view('dashboard.profile', compact('users'));
 
     }
     /**

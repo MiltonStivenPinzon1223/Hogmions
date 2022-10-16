@@ -17,6 +17,9 @@ return new class extends Migration
             $table->increments('id');
             $table->string('ip');
             $table->string('date');
+            $table->unsignedInteger('projects_id');
+            $table->foreign('projects_id')->references('id')->on('projects');
+            $table->string('mounth');
             $table->timestamps();
         });
     }

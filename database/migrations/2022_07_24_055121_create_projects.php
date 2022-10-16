@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('url_qr');
             $table->unsignedInteger('users_id');
             $table->foreign('users_id')->references('id')->on('users');
+            $table->string('cutting_day');
             $table->string('months_paid');
             $table->string('views');
             $table->timestamps();

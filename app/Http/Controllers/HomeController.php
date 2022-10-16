@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 use App\Models\User;
+use App\Models\Projects;
 
 class HomeController extends Controller
 {
@@ -23,8 +24,9 @@ class HomeController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        $users = user::where('id', $id)->first();
-        return view('home', compact('users'));
+        $count = DB::select("SELECT count(*) FROM projects where users_id = '$id'");
+        $projects = DB::select("SELECT * FROM projects where users_id = '$id'");
+        return view('dashboard.home', compact('projects', 'count'));
 
     }
 
