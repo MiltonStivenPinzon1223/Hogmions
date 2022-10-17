@@ -3,10 +3,11 @@
 @section('id'){{Auth::user()->id}}@endsection
 @section('photo'){{Auth::user()->url_photo}}@endsection
 @section('name'){{Auth::user()->name}}@endsection
-@section('proffession'){{Auth::user()->proffession}}@endsection
+@section('telephone'){{Auth::user()->telephone}}@endsection
+@section('email'){{Auth::user()->email}}@endsection
 @section('projects')
 @if ($projects == NULL)
-<li><a class="dropdown-item border-radius-md" href="{{route('homes.create')}}">Crea un nuevo proyecto</a></li>
+<li><a class="dropdown-item border-radius-md" href="{{route('project.create')}}">Crea un nuevo proyecto</a></li>
 @endif
 @foreach ($projects as $project)
 <li><a class="dropdown-item border-radius-md" href="{{$project->url}}">{{$project->name}}</a></li>
@@ -14,30 +15,100 @@
 
 @endsection
 @section('content')
-<div class="container-fluid py-4">
-@foreach ($projects as $project)
-<div class="row mt-4">
-  <div class="col-lg-12 col-md-12 mt-4 mb-4">
-    <div class="card z-index-2 ">
-      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-        <div class="bg-gradient-danger shadow-primary border-radius-lg py-3 pe-1">
-          <div class="chart">
-            <canvas id="chart-line" class="chart-canvas" height="170"></canvas>
-          </div>
+<div class="container-fluid px-2 px-md-4">
+  <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('{{url('media/img1.jpg')}}');">
+    <span class="mask bg-gradient-info opacity-6"></span>
+  </div>
+  <div class="card card-body mx-3 mx-md-4 mt-n6">
+    <div class="row gx-4 mb-2">
+      <div class="col-auto">
+        <div class="avatar avatar-xl position-relative">
+          <img
+            src="{{Auth::user()->url_photo}}" alt="profile_image" class="w-100 border-radius-lg shadow-sm"/>
         </div>
       </div>
-      <div class="card-body">
-        <h6 class="mb-0 ">Estadisticas de Vistas</h6>
-        <p class="text-sm ">{{$project->name}}</p>
-        <hr class="dark horizontal">
-        <div class="d-flex ">
-          <i class="material-icons text-sm my-auto me-1">schedule</i>
-          <p class="mb-0 text-sm">Lecturas del ultimo año</p>
+      <div class="col-auto my-auto">
+        <div class="h-100">
+          <h5 class="mb-1">@yield('name')</h5>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+      </div>
+    </div>
+    <div class="row">
+      <div class="row">
+
+        <div class="col-12 col-xl-12">
+          <div class="card card-plain h-100">
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="col-md-8 d-flex align-items-center">
+                  <h6 class="mb-0">Datos Personales</h6>
+                </div>
+                <div class="col-md-4 text-end">
+                  <a href="{{route('homes.edit', Auth::user()->id)}}">
+                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" aria-hidden="true" aria-label="Edit Profile"data-bs-original-title="Edit Profile"></i><span class="sr-only">Editar Datos Personales</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-3">
+              <ul class="list-group">
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                  <strong>Nombre:</strong> @yield('name')
+                </li>
+                <li class="list-group-item border-0 ps-0 text-sm">
+                  <strong>Telefono de Contacto:</strong>@yield('telephone')
+                </li>
+                <li class="list-group-item border-0 ps-0 text-sm">
+                  <strong>Email:</strong> @yield('email')
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mt-4">
+          <div class="mb-5 ps-3">
+            <h6 class="mb-1">Proyectos</h6>
+            <p class="text-sm">Informacion Basico Sobre tus Proyectos</p>
+          </div>
+          <div class="row">
+            <div class="col-xl-12 col-md-12 mb-xl-0">
+              <div class="card card-blog card-plain">
+                @if ($projects)
+                @foreach ($projects as $project)
+                <div class="card-body p-3">
+                    <p class="mb-0 text-sm">Project # {{$project->id}}</p>
+                      <h5>{{$project->name}}</h5>
+                    <img src="{{$project->url_qr}}" alt="">
+                    <ul class="list-group">
+                        <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                          <strong>Dia de Corte:</strong> {{$project->cutting_day}}
+                        </li>
+                        <li class="list-group-item border-0 ps-0 text-sm">
+                          <strong>Meses Pagados:</strong>{{$project->months_paid}}
+                        </li>
+                      </ul>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <a href="{{$project->url}}">
+                      <button type="button" class="btn btn-outline-primary btn-sm mb-0">
+                        Mirar Proyecto
+                      </button></a>
+                    </div>
+                  </div>
+                @endforeach
+                @else
+                <div class="alert alert-primary text-white" role="alert">
+                    <strong>Alerta!</strong> No tienes Proyectos en estos momentos!
+                </div>
+                @endif
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-@endforeach
-</div>
+
 @endsection

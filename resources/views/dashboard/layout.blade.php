@@ -29,7 +29,7 @@
 <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link text-white active bg-gradient-primary" href="../pages/dashboard.html">
+      <a class="nav-link text-white active bg-gradient-success" href="{{route('homes.index')}}">
       <button data-text="Awesome" class="button" id="button1">
           <span class="actual-text">&nbsp;Inicio&nbsp;</span>
           <span class="hover-text" aria-hidden="true">&nbsp;Inicio&nbsp;</span>
@@ -51,7 +51,7 @@
       <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-white " href="../pages/profile.html">
+      <a class="nav-link text-white " href="{{route('profile')}}">
         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
           <i class="material-icons opacity-10">person</i>
         </div>
@@ -59,12 +59,18 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-white " href="../pages/sign-in.html">
-        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-          <i class="material-icons opacity-10">login</i>
-        </div>
-        <span class="nav-link-text ms-1">Cerrar Sesion</span>
-      </a>
+      <a class="nav-link text-white" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                  <i class="material-icons opacity-10">login</i>
+                                        {{ __('Cerrar Sesion') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                    </div>
+                  </a>
     </li>
   </ul>
 </div>
@@ -80,7 +86,7 @@
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
           </div>
           <div class="dropdown">
-            <button class="btn bg-gradient-primary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn bg-gradient-success" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="material-icons">settings</i>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -126,7 +132,7 @@
 <script src="{{url('MaterialDashboard/assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
 <script src="{{url('MaterialDashboard/assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
 <script src="{{url('MaterialDashboard/assets/js/plugins/chartjs.min.js')}}"></script>
-<script src="{{url('MaterialDashboard/assets/js/extra-final.js')}}"></script>
+@yield('chart')
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js')}}"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->

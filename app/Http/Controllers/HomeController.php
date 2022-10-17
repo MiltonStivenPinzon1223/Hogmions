@@ -23,10 +23,37 @@ class HomeController extends Controller
 
     public function index()
     {
+        date_default_timezone_set("America/Bogota");
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $date = now();
+    $query = DB::select("SELECT * FROM visits where ip = '$ip' ORDER BY date desc");
+    if ($query) {
+        $fecha = $query[0]->date;
+        $fecha2 = date("Y-m-d H:i:s");
+        $nuevafecha = strtotime($fecha."+ 1 day");
+        $nuevafecha = date("Y-m-d H:i:s", $nuevafecha);
+        if ($fecha2 > $nuevafecha) {
+            $insert = DB::statement("INSERT INTO visits(ip, date, projects_id) values('$ip', '$date', '1')");
+        }
+    }else{
+        $insert = DB::statement("INSERT INTO visits(ip, date, projects_id) values('$ip', '$date', '1')");
+    }
+
+    $views = array();
+    for ($i=1; $i < 13; $i++) {
+        $sql = "select count(date) as date from visits where projects_id= '1' and date like '%-0$i-%'";
+        if ($i >= 10) {
+            $sql = "select count(date) as date from visits where projects_id= '1' and date like '%-$i-%'";
+        }
+        $sqls = DB::select($sql);
+        foreach ($sqls as $sql) {
+            array_push($views, $sql->date);
+        }
+    }
+
         $id = Auth::user()->id;
-        $count = DB::select("SELECT count(*) FROM projects where users_id = '$id'");
         $projects = DB::select("SELECT * FROM projects where users_id = '$id'");
-        return view('dashboard.home', compact('projects', 'count'));
+        return view('dashboard.home', compact('projects', 'views'));
 
     }
 

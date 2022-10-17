@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Projects;
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class UserController extends Controller
@@ -50,11 +52,12 @@ class UserController extends Controller
     }
 
 
-    public function profile($id)
+    public function profile()
     {
         $id = Auth::user()->id;
         $users = user::where('id', $id)->first();
-        return view('dashboard.profile', compact('users'));
+        $projects = DB::select("SELECT * FROM projects where users_id = '$id'");
+        return view('dashboard.profile', compact('users', 'projects'));
 
     }
     /**
@@ -134,11 +137,34 @@ class UserController extends Controller
         //
     }
 
-    public function qr()
+    public function qr($url, $name)
     {
-        QrCode::size(500)
-            ->format('png')
-            ->generate('www.google.com', public_path('images/qrcode.png'));
-return view('prueba');
+        $ruta = "../public/".$name.".svg";
+        QrCode::generate($url, $ruta);
+        $ruta = "../".$name.".svg";
+        return $ruta;
+    }
+
+    public function create_project()
+    {
+        $id = Auth::user()->id;
+        $projects = DB::select("SELECT * FROM projects where users_id = '$id'");
+        return view('dashboard.create_project', compact('id', 'projects'));
+    }
+
+    public function store_project(Request $request)
+    {
+        $project = new Projects();
+        $project->name = $request->name;
+        $project->url = "https://templatesenasoft.herokuapp.com/";
+        $qr = UserController::qr($project->url, $project->name);
+        $project->url_qr = $qr;
+        $project->users_id = Auth::user()->id;
+        $project->cutting_day = date('j');
+        $project->months_paid = '0';
+        $project->views = '0';
+
+        $project->save();
+        return redirect()->route('homes.index');
     }
 }
