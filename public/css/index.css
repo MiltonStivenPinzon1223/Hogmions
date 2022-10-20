@@ -286,9 +286,8 @@ button {
   justify-content: center;
 }
 
-.precio1::before{content: 'Basico ($30.000)';background-image: linear-gradient(45deg, red 0%, #f07532  51%, red  100%);}
-.precio2::before{content: 'Estandar ($40.000)';background-image: linear-gradient(45deg, #404040 0%, #BCB  51%, #404040  100%);}
-.precio3::before{content: 'Premium ($60.000)';background-image: linear-gradient(45deg, yellow 0%, rgb(244, 218, 25)  51%,yellow  100%);}
+.precio2::before{content: 'Estandar ($50.000)';background-image: linear-gradient(45deg, #404040 0%, #BCB  51%, #404040  100%);}
+.precio3::before{content: 'Premium ($75.000)';background-image: linear-gradient(45deg, yellow 0%, rgb(244, 218, 25)  51%,yellow  100%);}
 
 .card_box span::before {
   position: absolute;
@@ -298,7 +297,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #000;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -317,7 +316,8 @@ button {
   background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
 }
 
-.card_box p{margin:100px 30px 30px;}
+#carta2 p{margin:30px 30px 30px;}
+#carta3 p{margin:100px 30px 30px;}
 
 /* From uiverse.io by @Clenio21 */
 .card_box {
