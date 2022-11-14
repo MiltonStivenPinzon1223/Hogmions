@@ -20,9 +20,12 @@
                 background-size: cover;
             }
 
-            .container {
-                width: 100%;
-                padding-top: 5vh;
+            .fondo{
+                background-image: url('../../public/media/hero_1.jpg');
+                background-size: 50vw 90vh;
+                margin-top: -100px;
+                height: 90vh;
+                border-radius: 0px 0px 0px 200px;
             }
 
             .frame {
@@ -31,17 +34,13 @@
                 background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82mL0lCjn8cUhnzzoE1oYnjPkobX4USGFXw&usqp=CAU)
                     no-repeat center center;
                 background-size: cover;
-                margin-left: auto;
-                margin-right: auto;
+                margin-left: 5vw;
+                margin-top: 5vh;
                 border-top: solid 1px rgba(255, 255, 255, 0.5);
                 border-radius: 5px;
                 box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.2);
                 overflow: hidden;
                 transition: all 0.5s ease;
-            }
-
-            .frame-long {
-                height: 615px;
             }
 
             .frame-short {
@@ -112,7 +111,7 @@
                 font-weight: 300;
                 padding-left: 27px;
                 padding-right: 27px;
-                padding-top: 55px;
+                padding-top: 10px;
                 transition: opacity 0.5s ease, transform 0.5s ease;
             }
 
@@ -128,7 +127,7 @@
                 font-weight: 300;
                 padding-left: 27px;
                 padding-right:27px;
-                padding-top: 55px;
+                padding-top: 10px;
                 position: relative;
                 top: -375px;
                 left: 400px;
@@ -217,15 +216,6 @@
                 outline: none;
             }
 
-            .form-signin input:focus,
-            textarea:focus,
-            .form-signup input:focus,
-            textarea:focus {
-                background: rgba(255, 255, 255, 0.3);
-                border: none;
-                padding-right: 40px;
-                transition: background 0.5s ease;
-            }
 
             [type="checkbox"]:not(:checked),
             [type="checkbox"]:checked {
@@ -375,12 +365,11 @@
 
             .forgot {
                 height: 100px;
-                width: 80%;
-                margin-left: auto;
-                margin-right: auto;
+                width: 35vw;
+                margin-left: 5vw;
                 text-align: center;
                 padding-top: 24px;
-                margin-top: -535px;
+                margin-top: -400px;
                 border-top: solid 1px rgba(255, 255, 255, 0.3);
                 transition: all 0.5s ease;
             }
@@ -529,10 +518,67 @@
                     margin-left: 100px;
                 }
             }
+
+            .inputbox {
+  position: relative;
+  width: 196px;
+}
+
+.inputbox input {
+  position: relative;
+  width: 100%;
+  padding: 20px 10px 10px;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  color: #23242a;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+  z-index: 10;
+  margin-top: 20px;
+}
+
+.inputbox span {
+  position: absolute;
+  left: 0;
+  padding: 20px 10px 10px;
+  font-size: 1em;
+  color: #8f8f8f;
+  letter-spacing: 00.05em;
+  transition: 0.5s;
+  pointer-events: none;
+  margin-top: 20px;
+}
+
+.inputbox input:valid ~span,
+.inputbox input:focus ~span {
+  color: #45f3ff;
+  transform: translateX(-10px) translateY(-34px);
+  font-size: 0,75em;
+}
+
+.inputbox i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #45f3ff;
+  border-radius: 4px;
+  transition: 0.5s;
+  pointer-events: none;
+  z-index: 9;
+}
+
+.inputbox input:valid ~i,
+.inputbox input:focus ~i {
+  height: 44px;
+}
         </style>
     </head>
     <body>
-        <div class="container">
             <div class="frame">
                 <div class="nav">
                     <ul class="links">
@@ -548,37 +594,39 @@
                     <div class="col-sm-6">
                         <div ng-app ng-init="checked = false">
                             <form class="form-signin" action="" method="post" name="form">
-                                <label for="fullname">Nombre de Usuario</label>
-                                <input class="form-styling" type="text" name="username" placeholder=""/>
-                                <label for="password">Contraseña</label>
-                                <input class="form-styling" type="text" name="password" placeholder=""/>
-                                <input type="checkbox" id="checkbox" />
-                                <div class="btn-animate"><a class="btn-signin">Iniciar Sesion</a>
+                                <div class="inputbox">
+                                    <input required="required" type="text">
+                                    <span>Usuario</span>
+                                    <i></i>
+                                </div>
+                                <div class="inputbox">
+                                    <input required="required" type="password">
+                                    <span>Contraseña</span>
+                                    <i></i>
                                 </div>
                             </form>
                             <form class="form-signup" action="" method="post" name="form">
-                                <label for="fullname">Nombre de Usuario</label>
-                                <input class="form-styling" type="text" name="email" placeholder=""/>
-                                <label for="email">Email</label>
-                                <input class="form-styling" type="text" name="email" placeholder=""/>
-                                <label for="password">Crea una Contraseña</label>
-                                <input class="form-styling" type="text" name="confirmpassword" placeholder=""/>
-                                <a ng-click="checked = !checked" class="btn-signup" >REGISTRATE!</a>
-                            </form>
-                            <div class="success">
-                                <div class="successtext">
-                                    <p>
-                                        New User registered, Kindly check your email for
-                                        confirmation.
-                                    </p>
+                                <div class="inputbox">
+                                    <input required="required" type="text">
+                                    <span>Crea Un Usuario</span>
+                                    <i></i>
                                 </div>
-                            </div>
+                                <div class="inputbox">
+                                    <input required="required" type="text">
+                                    <span>Ingresa tu Email</span>
+                                    <i></i>
+                                </div>
+                                <div class="inputbox">
+                                    <input required="required" type="text">
+                                    <span>Crea una Contraseña</span>
+                                    <i></i>
+                                </div>
+                            </form>
                         </div>
-                        <div class="col-sm-6">
-                            <p>hola
-                                
-                            </p>
-                        </div>
+                    </div>
+                    <div class="col-sm-6 fondo">
+                        <p>hola
+                        </p>
                     </div>
                 </div>
                 <div class="forgot"><a href="#">Forgot your password?</a></div>
@@ -589,7 +637,6 @@
                     <a class="btn-goback" value="Refresh" onClick="history.go()"
                         >Go back</a
                     >
-                </div>
             </div>
             <a id="refresh" value="Refresh" onClick="history.go()">
                 <svg class="refreshicon" version="1.1" id="Capa_1" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 322.447 322.447" style="enable-background: new 0 0 322.447 322.447" xml:space="preserve">
