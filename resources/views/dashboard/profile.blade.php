@@ -24,7 +24,7 @@
       <div class="col-auto">
         <div class="avatar avatar-xl position-relative">
           <img
-            src="{{Auth::user()->url_photo}}" alt="profile_image" class="w-100 border-radius-lg shadow-sm"/>
+            src="{{Auth::user()->avatar}}" alt="profile_image" class="w-100 border-radius-lg shadow-sm"/>
         </div>
       </div>
       <div class="col-auto my-auto">

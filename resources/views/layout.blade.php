@@ -2,7 +2,7 @@
 <html lang="es" >
 <head>
   <meta charset="UTF-8">
-  <title>Hogmions</title>
+  <title>Quick Sentry</title>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="icon" href="{{url('media/img1.jpg')}}">

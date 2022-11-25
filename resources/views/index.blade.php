@@ -30,7 +30,7 @@
               </div>
               <div class="text sub-text">
                 <p>Tu herramienta de almacenamiento y generador de QR's para tus necesidades</p>
-                <a href="{{route('register')}}" class=""><button> INICIA AHORA</button></a>
+                <a href="{{route('login-google')}}" class=""><button> INICIA AHORA</button></a>
               </div>
             </div>
         </div>
