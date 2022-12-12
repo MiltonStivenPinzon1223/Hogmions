@@ -1,20 +1,18 @@
 @extends('dashboard.layout')
 @section('title', 'Inicio')
 @section('id'){{Auth::user()->id}}@endsection
-@section('photo'){{Auth::user()->url_photo}}@endsection
+@section('photo'){{Auth::user()->avatar}}@endsection
 @section('name'){{Auth::user()->name}}@endsection
 @section('telephone'){{Auth::user()->telephone}}@endsection
 @section('email'){{Auth::user()->email}}@endsection
 @section('projects')
-@if ($projects == NULL)
-<li><a class="dropdown-item border-radius-md" href="{{route('project.create')}}">Crea un nuevo proyecto</a></li>
-@endif
+
 @foreach ($projects as $project)
 <li><a class="dropdown-item border-radius-md" href="{{$project->url}}">{{$project->name}}</a></li>
 @endforeach
-
+<li><a class="dropdown-item border-radius-md" href="{{route('project.create')}}">Crea un nuevo proyecto</a></li>
 @endsection
-@section('content')
+@section('main')
 <div class="container-fluid px-2 px-md-4">
   <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('{{url('media/img1.jpg')}}');">
     <span class="mask bg-gradient-info opacity-6"></span>

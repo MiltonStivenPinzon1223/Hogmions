@@ -1,142 +1,171 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="{{url('MaterialDashboard/assets/img/apple-icon.png')}}">
-  <link rel="icon" type="image/png" href="{{url('MaterialDashboard/assets/img/favicon.png')}}">
-  <title>
-    Quick Sentry - @yield('name')
-  </title>
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
-  <link href="{{url('MaterialDashboard/assets/css/nucleo-icons.css')}}" rel="stylesheet" />
-  <link href="{{url('MaterialDashboard/assets/css/nucleo-svg.css')}}" rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/42d5adcbca.js')}}" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-  <link id="pagestyle" href="{{url('MaterialDashboard/assets/css/material-dashboard.css')}}?v=3.0.4" rel="stylesheet" />
-  <link id="pagestyle" href="{{url('css/home.css')}}?v=3.0.4" rel="stylesheet" />
-</head>
-<body class="g-sidenav-show  bg-gray-200 dark-version">
-<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 fixed-start   bg-gradient-dark" id="sidenav-main">
-<div class="sidenav-header">
-  <i class="fas fa-times cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-  <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
-    <img src="{{url('MaterialDashboard/assets/img/logo-ct.png')}}" class="navbar-brand-img h-100" alt="main_logo">
-    <span class="ms-1 font-weight-bold text-white">Quick Sentry</span>
-  </a>
-</div>
-<hr class="horizontal light mt-0 mb-2">
-<div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link text-white active bg-gradient-success" href="{{route('homes.index')}}">
-      <button data-text="Awesome" class="button" id="button1">
-          <span class="actual-text">&nbsp;Inicio&nbsp;</span>
-          <span class="hover-text" aria-hidden="true">&nbsp;Inicio&nbsp;</span>
-      </button>
-      </a>
-    </li>
-    <li class="nav-item">
-      <div class="nav-link dropdown">
-        <button data-text="Awesome" class="button" id="button2" data-bs-toggle="dropdown" aria-expanded="false">
-        <span class="actual-text">&nbsp;Mis Proyectos&nbsp;</span>
-                    <span class="hover-text" aria-hidden="true">&nbsp;Mis Proyectos&nbsp;</span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="button2">
-          @yield('projects')
-        </ul>
-      </div>
-    </li>
-    <li class="nav-item mt-3">
-      <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-white " href="{{route('profile')}}">
-        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-          <i class="material-icons opacity-10">person</i>
-        </div>
-        <span class="nav-link-text ms-1">Mi Perfil</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-white" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                  <i class="material-icons opacity-10">login</i>
-                                        {{ __('Cerrar Sesion') }}
-                                    </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                    </div>
-                  </a>
-    </li>
-  </ul>
-</div>
-</aside>
-  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-    <!-- Navbar -->
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
-      <div class="container-fluid py-1 px-3">
-        <nav aria-label="breadcrumb">
-          <h6 class="font-weight-bolder mb-0">Bienvennido @yield('name')</h6>
-        </nav>
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-          </div>
-          <div class="dropdown">
-            <button class="btn bg-gradient-success" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="material-icons">settings</i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="#">Perfil</a></li>
-              <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <!-- End Navbar -->
-    @yield('content')
-    <footer class="footer py-4  ">
-      <div class="container-fluid">
-        <div class="row align-items-center justify-content-lg-between">
-          <div class="col-lg-6 mb-lg-0 mb-4">
-            <div class="copyright text-center text-sm text-muted text-lg-start">
-              © <script>
-                document.write(new Date().getFullYear())
-              </script>,
-              creada <i class="fa fa-heart"></i> por
-              <a href="" class="font-weight-bold" target="_blank">Milton Stiven Gonzalez Pinzon</a>
+<head>
+    <meta charset="utf-8">
+    <title>DarkPan - Bootstrap 5 Admin Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{url('layouts/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+    <link href="{{url('layouts/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css')}}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{url('layouts/css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{{url('layouts/css/style.css')}}" rel="stylesheet">
+    @yield('head')
+</head>
+
+<body>
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
             </div>
-          </div>
         </div>
-      </div>
-    </footer>
-  </main>
-  <div class="fixed-plugin">
-    <i class="material-icons">face
-      <a href="javascript:;" class="fixed-plugin-button text-dark position-fixed px-3 py-2" id="iconNavbarSidenav">
-        <div class="sidenav-toggler-inner">
-          <i class="sidenav-toggler-line"></i>
-          <i class="sidenav-toggler-line"></i>
-          <i class="sidenav-toggler-line"></i>
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-secondary navbar-dark">
+                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>S.A.U</h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="@yield('photo')" alt="" style="width: 40px; height: 40px;">
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0">@yield('name')</h6>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                  @if (Route::is('homes.index'))
+                  <a href="{{route('login')}}" class="nav-item nav-link active"><i class="material-icons">dashboard</i>Inicio</a>
+                  @else
+                  <a href="{{route('login')}}" class="nav-item nav-link "><i class="material-icons">dashboard</i>Inicio</a>
+                  @endif
+                  @if (Route::is('profile'))
+                  <a href="{{route('profile')}}" class="nav-item nav-link active"><i class="material-icons">person</i>Mi Perfil</a>
+                  @else
+                  <a href="{{route('profile')}}" class="nav-item nav-link "><i class="material-icons">person</i>Mi Perfil</a>
+                  @endif
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <div class="nav-item">
+                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        this.closest('form').submit(); " role="button">
+                                <i class="fas fa-sign-out-alt"></i>
+                                {{ __('Log Out') }}
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </nav>
         </div>
-      </a>
-    </i>
-  </div>
-<!--   Core JS Files   -->
-<script src="{{url('MaterialDashboard/assets/js/core/popper.min.js')}}"></script>
-<script src="{{url('MaterialDashboard/assets/js/core/bootstrap.min.js')}}"></script>
-<script src="{{url('MaterialDashboard/assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
-<script src="{{url('MaterialDashboard/assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
-<script src="{{url('MaterialDashboard/assets/js/plugins/chartjs.min.js')}}"></script>
-@yield('chart')
-<!-- Github buttons -->
-<script async defer src="https://buttons.github.io/buttons.js')}}"></script>
-<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{{url('MaterialDashboard/assets/js/material-dashboard.min.js')}}?v=3.0.4"></script>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="navbar-nav align-items-center ms-auto">
+                </div>
+            </nav>
+            <!-- Navbar End -->
+
+            <!-- Widgets Start -->
+            @yield('main')
+            <!-- Widgets End -->
+
+
+        </div>
+        <!-- Content End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{url('layouts/lib/chart/chart.min.js')}}"></script>
+    <script src="{{url('layouts/lib/easing/easing.min.js')}}"></script>
+    <script src="{{url('layouts/lib/waypoints/waypoints.min.js')}}"></script>
+    <script src="{{url('layouts/lib/owlcarousel/owl.carousel.min.js')}}"></script>
+    <script src="{{url('layouts/lib/tempusdominus/js/moment.min.js')}}"></script>
+    <script src="{{url('layouts/lib/tempusdominus/js/moment-timezone.min.js')}}"></script>
+    <script src="{{url('layouts/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{{url('layouts/js/main.js')}}"></script>
+<!-- Code injected by live-server -->
+@yield('scripts')
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 </body>
 
 </html>

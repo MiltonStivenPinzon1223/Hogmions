@@ -1,7 +1,7 @@
 @extends('dashboard.layout')
 @section('title', 'Inicio')
 @section('id'){{Auth::user()->id}}@endsection
-@section('photo'){{Auth::user()->url_photo}}@endsection
+@section('photo'){{Auth::user()->avatar}}@endsection
 @section('name'){{Auth::user()->name}}@endsection
 @section('proffession'){{Auth::user()->proffession}}@endsection
 @section('projects')
@@ -13,7 +13,7 @@
 @endforeach
 
 @endsection
-@section('content')
+@section('main')
 <div class="container-fluid py-4">
 @foreach ($projects as $project)
 <div class="row mt-4">
