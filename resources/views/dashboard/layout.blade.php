@@ -48,7 +48,7 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>S.A.U</h3>
+                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Quick Sentry</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -70,6 +70,7 @@
                   @else
                   <a href="{{route('profile')}}" class="nav-item nav-link "><i class="material-icons">person</i>Mi Perfil</a>
                   @endif
+                  @yield('projects')
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <div class="nav-item">
@@ -126,9 +127,10 @@
     <script src="{{url('layouts/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 
     <!-- Template Javascript -->
-    <script src="{{url('layouts/js/main.js')}}"></script>
 <!-- Code injected by live-server -->
 @yield('scripts')
+
+<script src="{{url('layouts/js/main.js')}}"></script>
 <script>
 	// <![CDATA[  <-- For SVG support
 	if ('WebSocket' in window) {

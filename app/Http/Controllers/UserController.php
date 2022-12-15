@@ -12,10 +12,10 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class UserController extends Controller
 {
-    /*public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,6 +25,7 @@ class UserController extends Controller
     {
         $id = Auth::user()->id;
         $querys = DB::select("SELECT * from projects where users_id = '$id'");
+        return $querys;
         return view('home', compact('querys'));
     }
 
@@ -60,38 +61,6 @@ class UserController extends Controller
         return view('dashboard.profile', compact('users', 'projects'));
 
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return $id;
-        $users = user::where('id', $id)->first();
-
-        return $users;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $query = DB::update('UPDATE users SET name = \''.$request->name.'\', proffession=\''.$request->proffession.'\', telephone = \''.$request->telephone.'\', email=\''.$request->email.'\' WHERE id = \''.$id.'\';');
