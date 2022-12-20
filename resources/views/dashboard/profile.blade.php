@@ -13,11 +13,8 @@
 <li><a class="dropdown-item border-radius-md" href="{{route('project.create')}}">Crea un nuevo proyecto</a></li>
 @endsection
 @section('main')
-<div class="container-fluid px-2 px-md-4">
-  <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('{{url('media/img1.jpg')}}');">
-    <span class="mask bg-gradient-info opacity-6"></span>
-  </div>
-  <div class="card card-body mx-3 mx-md-4 mt-n6">
+<div class="container-fluid pt-4 px-4">
+  <div class="card card-body mx-3 mx-md-4 mt-n6 bg-secondary">
     <div class="row gx-4 mb-2">
       <div class="col-auto">
         <div class="avatar avatar-xl position-relative">
@@ -27,44 +24,15 @@
       </div>
       <div class="col-auto my-auto">
         <div class="h-100">
-          <h5 class="mb-1">@yield('name')</h5>
+          <h4 class="mb-1">@yield('name')</h4>
+          <h6 class="mb-1">@yield('email')</h6>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
       </div>
     </div>
-    <div class="row">
-      <div class="row">
-
-        <div class="col-12 col-xl-12">
-          <div class="card card-plain h-100">
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="col-md-8 d-flex align-items-center">
-                  <h6 class="mb-0">Datos Personales</h6>
-                </div>
-                <div class="col-md-4 text-end">
-                  <a href="{{route('homes.edit', Auth::user()->id)}}">
-                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" aria-hidden="true" aria-label="Edit Profile"data-bs-original-title="Edit Profile"></i><span class="sr-only">Editar Datos Personales</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="card-body p-3">
-              <ul class="list-group">
-                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
-                  <strong>Nombre:</strong> @yield('name')
-                </li>
-                <li class="list-group-item border-0 ps-0 text-sm">
-                  <strong>Telefono de Contacto:</strong>@yield('telephone')
-                </li>
-                <li class="list-group-item border-0 ps-0 text-sm">
-                  <strong>Email:</strong> @yield('email')
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+    <div class="row bg-secondary">
+      <div class="row bg-secondary">
         <div class="col-12 mt-4">
           <div class="mb-5 ps-3">
             <h6 class="mb-1">Proyectos</h6>
@@ -72,21 +40,15 @@
           </div>
           <div class="row">
             <div class="col-xl-12 col-md-12 mb-xl-0">
-              <div class="card card-blog card-plain">
                 @if ($projects)
+                <div class="row">
                 @foreach ($projects as $project)
-                <div class="card-body p-3">
-                    <p class="mb-0 text-sm">Project # {{$project->id}}</p>
+                <div class="col-sm-6 p-3">
+                    <p class="mb-0 text-sm">Proyecto # {{$project->id}}</p>
                       <h5>{{$project->name}}</h5>
-                    <img src="{{$project->url_qr}}" alt="">
-                    <ul class="list-group">
-                        <li class="list-group-item border-0 ps-0 pt-0 text-sm">
-                          <strong>Dia de Corte:</strong> {{$project->cutting_day}}
-                        </li>
-                        <li class="list-group-item border-0 ps-0 text-sm">
-                          <strong>Meses Pagados:</strong>{{$project->months_paid}}
-                        </li>
-                      </ul>
+                    <div class="d-flex align-items-center border-bottom py-3">
+                      <img class="rounded-circle flex-shrink-0" src="" alt="" style="width: 40px; height: 40px;">
+                  </div>
                     <div class="d-flex align-items-center justify-content-between">
                         <a href="{{$project->url}}">
                       <button type="button" class="btn btn-outline-primary btn-sm mb-0">
@@ -95,12 +57,12 @@
                     </div>
                   </div>
                 @endforeach
+                </div>
                 @else
                 <div class="alert alert-primary text-white" role="alert">
                     <strong>Alerta!</strong> No tienes Proyectos en estos momentos!
                 </div>
                 @endif
-              </div>
             </div>
           </div>
         </div>
