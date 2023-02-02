@@ -6,11 +6,16 @@
 @section('telephone'){{Auth::user()->telephone}}@endsection
 @section('email'){{Auth::user()->email}}@endsection
 @section('projects')
+<div class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Mis Proyectos</a>
+  <div class="dropdown-menu bg-transparent border-0">
+      @foreach ($projects as $project)
+      <a href="{{$project->url}}" class="dropdown-item">{{$project->name}}</a>
+      @endforeach
+      <a href="{{route('project.create')}}" class="dropdown-item">Crea un nuevo proyecto</a>
+  </div>
+</div>
 
-@foreach ($projects as $project)
-<li><a class="dropdown-item border-radius-md" href="{{$project->url}}">{{$project->name}}</a></li>
-@endforeach
-<li><a class="dropdown-item border-radius-md" href="{{route('project.create')}}">Crea un nuevo proyecto</a></li>
 @endsection
 @section('main')
 <div class="container-fluid pt-4 px-4">
@@ -31,7 +36,7 @@
       <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
       </div>
     </div>
-    <div class="row bg-secondary">
+    <div class="bg-secondary">
       <div class="row bg-secondary">
         <div class="col-12 mt-4">
           <div class="mb-5 ps-3">
@@ -47,10 +52,10 @@
                     <p class="mb-0 text-sm">Proyecto # {{$project->id}}</p>
                       <h5>{{$project->name}}</h5>
                     <div class="d-flex align-items-center border-bottom py-3">
-                      <img class="rounded-circle flex-shrink-0" src="" alt="" style="width: 40px; height: 40px;">
+                      <img class="flex-shrink-0" src="{{$project->url_qr}}" alt="" style="width: 150px; height: 150px;">
                   </div>
                     <div class="d-flex align-items-center justify-content-between">
-                        <a href="{{$project->url}}">
+                        <a href="../project/{{$project->id}}">
                       <button type="button" class="btn btn-outline-primary btn-sm mb-0">
                         Mirar Proyecto
                       </button></a>
@@ -70,5 +75,5 @@
     </div>
   </div>
 </div>
-
+<script></script>
 @endsection

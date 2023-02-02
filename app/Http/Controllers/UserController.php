@@ -71,7 +71,7 @@ class UserController extends Controller
             return "Error al realizar la actualizacion, verifica si realmente hiciste un cambio.";
         }
     }
-
+/*
     public function update_photo(Request $request, $id)
     {
         $request->validate([
@@ -94,7 +94,7 @@ class UserController extends Controller
             die();
         } 
     }
-
+*/
     /**
      * Remove the specified resource from storage.
      *
@@ -125,7 +125,7 @@ class UserController extends Controller
     {
         $project = new Projects();
         $project->name = $request->name;
-        $project->url = "https://templatesenasoft.herokuapp.com/";
+        $project->url = $request->url;
         $qr = UserController::qr($project->url, $project->name);
         $project->url_qr = $qr;
         $project->users_id = Auth::user()->id;

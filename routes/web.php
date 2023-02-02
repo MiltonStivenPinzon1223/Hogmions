@@ -54,6 +54,27 @@ Route::get('/google-callback', function ()
 
 Route::get('/home', [UserController::class, 'index'])->name('home');
 Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+Route::get('project/{id}', function($id){
+    date_default_timezone_set("America/Bogota");
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $date = now();
+    $query = DB::select("SELECT * FROM visits where ip = '$ip' AND projects_id='$id' ORDER BY date desc");
+    if ($query) {
+        $fecha = $query[0]->date;
+        $fecha2 = date("Y-m-d H:i:s");
+        $nuevafecha = strtotime($fecha."+ 1 day");
+        $nuevafecha = date("Y-m-d H:i:s", $nuevafecha);
+        if ($fecha2 > $nuevafecha) {
+            $insert = DB::statement("INSERT INTO visits(ip, date, projects_id) values('$ip', '$date', '$id')");
+        }
+        }else{
+            $insert = DB::statement("INSERT INTO visits(ip, date, projects_id) values('$ip', '$date', '$id')");
+        }
+	$project = DB::select("select * from projects where id = '$id'");
+    $url="location: ".$project[0]->url;
+    return $url;
+    header($url) ;
+});
 Route::get('/project/create', [UserController::class, 'create_project'])->name('project.create');
 Route::post('/project/store', [UserController::class, 'store_project'])->name('project.store');
 Route::post('/qr', [UserController::class, 'qr'])->name('qr');

@@ -29,7 +29,7 @@ class HomeController extends Controller
     $ip = $_SERVER['REMOTE_ADDR'];
     $date = now();
     $mes = date('m');
-    
+    $año = date('o');
     $query = DB::select("SELECT * FROM visits where ip = '$ip' ORDER BY date desc");
     if ($query) {
         $fecha = $query[0]->date;
@@ -42,68 +42,77 @@ class HomeController extends Controller
     }else{
         $insert = DB::statement("INSERT INTO visits(ip, date, projects_id) values('$ip', '$date', '1')");
     }
-
     //busqueda de visitas por mes
         $id = Auth::user()->id;
         $projects = DB::select("SELECT * FROM projects where users_id = '$id'");
         $final = array();
+        $mesi = $mes +1;
         foreach ($projects as $project) {
             $views = array();
             $object = (object) [];
             $mouths = array();
-            for ($i= $mes -2; $i < $mes + 1; $i++) {
-                $sql = "select count(date) as date from visits where projects_id= '$project->id' and date like '%-0$i-%'";
-                if ($i >= 10) {
-                    $sql = "select count(date) as date from visits where projects_id= '$project->id' and date like '%-$i-%'";
+            $mes = $mesi;
+            for ($i= 0; $i < 3; $i++) {
+                if ($mes == 1) {
+                    $sql = "select count(date) as date from visits where projects_id= '$project->id' and date like '%".$año-1 ."-12-%'";
+                    $mouth= "Diciembre-" . $año-1;
+                }elseif ($mes == 0) {
+                    $sql = "select count(date) as date from visits where projects_id= '$project->id' and date like '%".$año-1 ."-11-%'";
+                    $mouth= "Noviembre-" . $año-1;
+                }elseif ($mes >= 10) {
+                    $sql = "select count(date) as date from visits where projects_id= '$project->id' and date like '%$año-".$mes-1 ."-%'";
+                }else{
+                    $sql = "select count(date) as date from visits where projects_id= '$project->id' and date like '%$año-0".$mes-1 ."-%'";
                 }
+                $mes = $mes - 1;
                 $sqls = DB::select($sql);
                 foreach ($sqls as $sql) {
                     array_push($views, $sql->date);
                 }
-                switch ($i) {
+                switch ($mes) {
                     case "01":
-                        $mouth = "Enero";
+                        $mouth = "Enero". "-" . $año;
                         break;
                     case "02":
-                        $mouth = "Febrero";
+                        $mouth = "Febrero". "-" . $año;
                         break;
                     case "03":
-                        $mouth = "Marzo";
+                        $mouth = "Marzo". "-" . $año;
                         break;
                     case "04":
-                        $mouth = "Abril";
+                        $mouth = "Abril". "-" . $año;
                         break;
                     case "05":
-                        $mouth = "Mayo";
+                        $mouth = "Mayo". "-" . $año;
                         break;
                     case "06":
-                        $mouth = "Junio";
+                        $mouth = "Junio". "-" . $año;
                         break;
                     case "07":
-                       $mouth = "Julio";
+                       $mouth = "Julio". "-" . $año;
                        break;
                     case "08":
-                        $mouth = "Agosto";
+                        $mouth = "Agosto". "-" . $año;
                         break;
                     case "09":
-                       $mouth = "Septiembre";
+                       $mouth = "Septiembre". "-" . $año;
                        break;
                     case "10":
-                        $mouth = "Octubre";
+                        $mouth = "Octubre". "-" . $año;
                         break;
                     case "11":
-                        $mouth = "Noviembre";
+                        $mouth = "Noviembre". "-" . $año;
                         break;
                     case "12":
-                        $mouth = "Diciembre";
+                        $mouth = "Diciembre". "-" . $año;
                         break;
                 }
                 array_push($mouths, $mouth);
             }
                 $name = $project->name;
                 $object->name = $name;
-                $object->views = $views;
-                $object->mouths = $mouths;
+                $object->views = array_reverse($views);
+                $object->mouths = array_reverse($mouths);
                 $object->color = "rgba(".rand(10,255).",".rand(10,255).",".rand(10,255).", .5)";
             array_push($final, $object);
         }

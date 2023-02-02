@@ -30,6 +30,7 @@
 
     <!-- Template Stylesheet -->
     <link href="{{url('layouts/css/style.css')}}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     @yield('head')
 </head>
 
