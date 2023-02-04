@@ -82,3 +82,9 @@ Route::put('/update-photo/{id}', [UserController::class, 'update_photo'])->name(
 Route::resource('/home', HomeController::class)->names('homes');
 Route::get('/register', [HomeController::class, 'create'])->name('register');
 Route::get('/catalogue', [HomeController::class, 'catalogue'])->name('catalogue');
+
+
+
+Route::get('/prueba', function(){
+    return view("prueba");
+})->name('catalogue');
