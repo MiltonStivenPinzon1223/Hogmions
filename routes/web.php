@@ -54,6 +54,7 @@ Route::get('/google-callback', function ()
 
 Route::get('/home', [UserController::class, 'index'])->name('home');
 Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+Route::get('/project/create', [UserController::class, 'create_project'])->name('project.create');
 Route::get('project/{id}', function($id){
     date_default_timezone_set("America/Bogota");
     $ip = $_SERVER['REMOTE_ADDR'];
@@ -71,12 +72,10 @@ Route::get('project/{id}', function($id){
             $insert = DB::statement("INSERT INTO visits(ip, date, projects_id) values('$ip', '$date', '$id')");
         }
 	$project = DB::select("select * from projects where id = '$id'");
-    $url="location: ".$project[0]->url;
-    return $url;
-    header($url) ;
+    return redirect($project[0]->url) ;
 });
-Route::get('/project/create', [UserController::class, 'create_project'])->name('project.create');
 Route::post('/project/store', [UserController::class, 'store_project'])->name('project.store');
+Route::post('/project/store_file', [UserController::class, 'store_file'])->name('project.file');
 Route::post('/qr', [UserController::class, 'qr'])->name('qr');
 Route::put('/update-photo/{id}', [UserController::class, 'update_photo'])->name('update-photo');
 

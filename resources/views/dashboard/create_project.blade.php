@@ -55,7 +55,7 @@
                           </div> <!-- End -->
                           <!-- Paypal info -->
                           <div id="file" class="tab-pane fade pt-3">
-                            <form method="POST" action="{{route('project.store')}}">
+                            <form method="POST" action="{{route('project.file')}}" enctype="multipart/form-data">
                               @csrf
                               <div class="form-floating mb-3">
                                 <input type="text" class="form-control bg-white" name="name" placeholder="floatingInput">
@@ -63,7 +63,7 @@
                               </div>
                               <div>
                                 <label for="formFileLg" class="form-label">Selecciona el archivo</label>
-                                <input class="form-control form-control-lg bg-dark" id="formFileLg" type="file">
+                                <input class="form-control form-control-lg bg-dark" id="formFileLg" type="file" name="file">
                             </div><br>
                               <button type="submit" class="btn btn-outline-primary w-100 m-2" type="button">Registar</button>
                             </form>

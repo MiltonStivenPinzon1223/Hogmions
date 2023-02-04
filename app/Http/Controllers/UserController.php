@@ -126,14 +126,43 @@ class UserController extends Controller
         $project = new Projects();
         $project->name = $request->name;
         $project->url = $request->url;
-        $qr = UserController::qr($project->url, $project->name);
-        $project->url_qr = $qr;
+        $project->url_qr = "a";
         $project->users_id = Auth::user()->id;
         $project->cutting_day = date('j');
         $project->months_paid = '0';
         $project->views = '0';
 
         $project->save();
+        $id = DB::select("select id from projects where name= '$project->name'");
+        $url = "127.0.0.1/project/".$id[0]->id;
+        $qr = UserController::qr($url, $project->name);
+        $query = DB::statement("update projects set url_qr='$qr' where name='$project->name'");
+        return redirect()->route('homes.index');
+    }
+
+    public function store_file(Request $request)
+    {
+        $nombre = str_replace(" ","_",$request->name).".pdf";
+        $servidor = 'C:\xampp\htdocs\Hogmions\public\\'.$nombre;
+        $tipo = strtolower(pathinfo($servidor, PATHINFO_EXTENSION));
+        if (move_uploaded_file($request->file('file'), $servidor)) {
+            $servidor = substr($servidor, 32);
+            $servidor = "..\..\\".$servidor;
+        }
+        $project = new Projects();
+        $project->name = $request->name;
+        $project->url = $servidor;
+        $project->url_qr = "a";
+        $project->users_id = Auth::user()->id;
+        $project->cutting_day = date('j');
+        $project->months_paid = '0';
+        $project->views = '0';
+
+        $project->save();
+        $id = DB::select("select id from projects where name= '$project->name'");
+        $url = "127.0.0.1/project/".$id[0]->id;
+        $qr = UserController::qr($url, $project->name);
+        $query = DB::statement("update projects set url_qr='$qr' where name='$project->name'");
         return redirect()->route('homes.index');
     }
 }
