@@ -1,3 +1,11 @@
+body::-webkit-scrollbar{width: 10px;background-color: #41295a;}
+body::-webkit-scrollbar-thumb{background-color: #2F0743;border-radius: 50px;}
+body::-webkit-scrollbar-thumb:hover{background-color:#470112;}
+
+html{
+  scroll-behavior: smooth;
+}
+
 .hoverable {
     display: inline-block;
     backface-visibility: hidden;
@@ -136,15 +144,18 @@
     object-position: center;
   }
 
+  .info-photo-left{border-radius: 20px 0px 0px 20px}
+  .info-photo-right{border-radius: 0px 20px 20px 0px}
+
   .info{
     padding: 0!important;
+    height: 100%!important;
   }
 
-  .who{
-    margin: 30px 60px 0px 30px!important;
+  .row{
+    margin-bottom:0px!important;
   }
 
-  .wrapper{border-radius:50px; padding-bottom: 30px; padding-top: 20px;}
 
 footer{
   background: linear-gradient(to bottom, #7f7f7f, #000000);
@@ -286,10 +297,6 @@ button:hover::after {
   align-items: center;
   justify-content: center;
 }
-
-.precio2::before{content: 'Estandar ($50.000)';background-image: linear-gradient(45deg, #404040 0%, #BCB  51%, #404040  100%);}
-.precio3::before{content: 'Premium ($75.000)';background-image: linear-gradient(45deg, yellow 0%, rgb(244, 218, 25)  51%,yellow  100%);}
-
 .card_box span::before {
   position: absolute;
   width: 150%;
@@ -477,7 +484,6 @@ button:hover::after {
  
 
 p {
-  color: #b3b3b3;
   font-weight: 300; }
 
 h1, h2, h3, h4, h5, h6,
@@ -492,7 +498,10 @@ a {
     text-decoration: none !important; }
 
 .content {
-  background-color: #272343; }
+  background: #200122;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #6f0000, #200122);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #6f0000, #200122); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
 
 h2 {
   font-size: 20px; }
@@ -633,7 +642,10 @@ h2 {
     }
 
     @media screen and (min-width: 990px) {
-      .info-photo{height: 60vh!important;}
+      .info-photo{
+        margin-top: 0px!important;
+        height: 60vh!important;
+      }
       .page-content{padding-top: 200px!important;}
     }
 

@@ -36,41 +36,40 @@
         </div>
       </div>
     </div>
-
     <div class="wrapper white">
-      <div class="row who" data-aos="fade-left">
-              <div class="col s12 l4">
-                <div class="container ">
-                  <h3>QUIENES SOMOS</h3><hr>
-                  <p>Somos una asociación de jóvenes programadores y diseñadores capaz de estructurar, diseñar y desarrollar aplicativos webs enfocados para las comunidades de micro empresas, brindándoles servicios de calidad para diferentes tares como publicidad, automatización de procesos internos o externos de sus emprendimientos.</p>
+      <div class="row" data-aos="fade-left">
+              <div class="col s12 l6">
+                <div class=" ">
+                  <h3>¿Qué es?</h3><hr>
+                  <p>Es aplicativo web el cual nos permite general códigos QRs de manera sencilla y eficaz, teniendo un panel de control donde podremos monitoriar la frecuencia de la utilización de estos QRs. Esto con el fin de mostrarle al usuario de manera estadística el crecimiento o caída de la popularidad de sus proyectos, para asi ellos puedan tomar decisiones a partir de estos datos.</p>
                 </div>
               </div>
-              <div class="col s12 l8 info">
-                <img src="{{url('media/img1.jpg')}}" alt="" class="info-photo">
+              <div class="col s12 l6 info">
+                <img src="{{url('media/img4.jpg')}}" alt="" class="info-photo info-photo-left">
               </div>
       </div>
       
-      <div class="row who" data-aos="fade-right">
-      <div class="col s12 l8 info">
-                <img src="{{url('media/img2.jpg')}}" alt="" class="info-photo">
+      <div class="row" data-aos="fade-right">
+      <div class="col s12 l6 info">
+                <img src="{{url('media/img2.jpg')}}" alt="" class="info-photo info-photo-right">
               </div>
-              <div class="col s12 l4">
+              <div class="col s12 l6">
                 <div class="container ">
                   <h4>QUE OFRECEMOS</h4><hr>
                   <p>Estamos enfocados en el desarrollo web, ofreciéndoles a nuestros clientes servicios de calidad con la que podamos brindarles diferentes herramientas para sus emprendimientos o sus propias laborales cotidianas.</p>
                 </div>
               </div>
       </div>
-      <div class="row who" data-aos="fade-down">
-      <div class="col s12 l6 info">
-                <img src="{{url('media/img3.jpg')}}" alt="" class="info-photo">
-              </div>
+      <div class="row" data-aos="fade-down">
               <div class="col s12 l6">
                 <div class="container ">
                   <h4>NUESTRO SERVICIO</h4><hr>
                   <p>Como diseñadores hemos logrado desarrollador diferentes plantillas que te ayudaran a crear tu aplicativo con el cual podrás encontrar en un “amplio” catalogo.</p><br><br><br><br>
                   <a class="waves-effect waves-light btn green"><i class="material-icons right">send</i>Mirar Catalogo</a>
                 </div>
+              </div>
+              <div class="col s12 l6 info">
+                <img src="{{url('media/img3.jpg')}}" alt="" class="info-photo info-photo-left">
               </div>
       </div>
       </div>
